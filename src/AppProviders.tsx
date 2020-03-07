@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { AuthProvider } from "./AuthProvider";
+import { Provider } from 'react-redux';
+import AuthProvider from "./AuthProvider";
+import store from './store';
 
 interface Props  {
   children: any;
@@ -7,9 +9,11 @@ interface Props  {
 
 const AppProviders: React.FC<Props> = ({ children  }) => {
   return (
-    <AuthProvider>
-      {children}
-    </AuthProvider>
+    <Provider store={store}>
+      <AuthProvider>
+        {children}
+      </AuthProvider>
+    </Provider>
   );
 };
 
