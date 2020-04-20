@@ -9,6 +9,4 @@ const actions = {
   ...userActions,
 };
 
-export {
-  actions,
-};
+export { actions };

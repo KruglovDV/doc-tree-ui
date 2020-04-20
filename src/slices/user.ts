@@ -3,7 +3,7 @@ import axios from 'axios';
 import routes from '../routes';
 
 type User = {
-  id: number,
+  id: number;
 };
 
 const userSlice = createSlice({
@@ -15,8 +15,8 @@ const userSlice = createSlice({
     },
     clearUser() {
       return null;
-    }
-  }
+    },
+  },
 });
 
 export const { setUser, clearUser } = userSlice.actions;

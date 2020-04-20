@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import AppProviders from "./AppProviders";
+import AppProviders from './AppProviders';
 
 ReactDOM.render(
   <AppProviders>
-    <App/>
+    <App />
   </AppProviders>,
   document.getElementById('root')
 );

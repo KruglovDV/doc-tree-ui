@@ -1,41 +1,39 @@
-import { FC, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { API_TOKEN_KEY } from "./constants";
-import { isNull, identity } from 'lodash';
+import { isNull } from 'lodash';
+import { API_TOKEN_KEY } from './constants';
 import { getUser } from './slices/user';
 
 interface Props {
-  children: any;
+  children: any; // eslint-disable-line
 }
 
-const AuthProvider: FC<Props> = ({ children }) => {
+const AuthProvider = ({ children }: Props) => {
   const [isLoading, changeLoading] = useState(true);
   const token = window.localStorage.getItem(API_TOKEN_KEY);
 
   useEffect(() => {
-    const init = async () =>{
+    const init = async () => {
       if (isNull(token)) {
         changeLoading(false);
         return;
       }
       try {
         await getUser();
-      } catch (e) {}
+      } catch (e) {
+        console.log(e);
+      }
       changeLoading(false);
     };
     init();
   }, []);
 
   if (isLoading) {
-    return 'loading';
+    return <div>loading</div>;
   }
 
-  return (
-    children
-  )
+  return children;
 };
-const mapDispatchToProps = {
+const mapDispatchToProps = {};
 
-};
-
-export default  connect(null, mapDispatchToProps)(AuthProvider);
+export default connect(null, mapDispatchToProps)(AuthProvider);
